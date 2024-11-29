@@ -1,6 +1,9 @@
-const withPWA = require('next-pwa');  
+const withPWA = require('next-pwa')({
+  dest: 'public', // Output directory for service worker
+  register: true, // Automatically register the service worker
+  skipWaiting: true, // Activate new service worker as soon as it's available
+});
 
-module.exports = withPWA({  
-  dest: 'public', // Where service workers and other assets are generated  
-  disable: process.env.NODE_ENV === 'development', // Disable PWA in development  
-});  
+module.exports = withPWA({
+  reactStrictMode: true, // Enable React's Strict Mode
+});
